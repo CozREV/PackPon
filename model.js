@@ -1,10 +1,6 @@
-let items = [{
-    name: "passport",
-    quantity: 1,
-    hasPacked: true
-},
-{
-    name: "Adapter",
-    quantity: 2,
-    hasPacked: false
-}]
+let appState = {
+    app: { currentView: "Menu" },
+    packing: { items: [ ] },
+    budget: { expenses: [ ] },
+    currency: { amount: 0, rate: 0 }
+}
