@@ -1,4 +1,4 @@
-let appState = {
+const appState = {
     app: { currentView: "Menu" },
     packing: { items: [ ] },
     budget: { expenses: [ ] },
