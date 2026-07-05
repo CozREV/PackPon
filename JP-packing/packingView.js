@@ -1,16 +1,12 @@
-function ViewList(){
-    let html = items.map(item => /*html*/ `
+function ViewPacking(){
+    return /*html*/ `
         <table>
             <tr>
-                <td class="itemList">${item.name}</td>
-                <td class="itemList">${item.quantity}</td>
-                <td class="itemList">${item.hasPacked}</td>
+                <td class="itemList">${appState.packing.items.name}</td>
+                <td class="itemList">${appState.packing.items.quantity}</td>
+                <td class="itemList">${appState.packing.items.hasPacked}</td>
             </tr>
         </table>
-        `).join("")
-
-    return `<ul>${html}</ul>`
+        `
 }
-
-document.getElementById("main").innerHTML = ViewList()
 
