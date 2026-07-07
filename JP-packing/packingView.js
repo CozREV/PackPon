@@ -26,6 +26,32 @@ function ViewPacking(){
                 <button class="AddRemove-btn" id="RemoveBtn">Remove row</button>
             </div>
         </section>
+        ${ViewPopup()}
             `
+}
+
+function ViewPopup(){
+    return /*html*/ `
+        <div id="popup-overlay" class="hidden">
+            <div id="popup-sheet">
+                <table> 
+                    <tr>
+                        <th>Name</th>
+                        <th>Quantity</th>
+                        <th>Weight</th>
+                        <th>Packed</th>
+                    </tr>
+                    <tr>
+                        <td><input type="text" id="popup-name"></td>
+                        <td><input type="number" id="popup-quantity"></td>
+                        <td><input type="number" id="popup-weight"></td>
+                        <td><input type="checkbox" id="popup-packed"></td>
+                    </tr>
+                </table>
+                <button class="popup-btn" id="confirm">Add</button>
+                <button class="popup-btn" id="cancel">Cancel</button>
+            </div>
+        </div>
+    `
 }
 
