@@ -1,10 +1,10 @@
 function ViewPacking(){
     let rows = appState.packing.items.map((item, index) => /*html*/ `
         <tr data-index="${index}">
-            <td contenteditable="true" class="itemList">${item.name}</td>
-            <td contenteditable="true" class="itemList">${item.quantity}</td>
-            <td contenteditable="true" class="itemList">${item.weight} ${item.unit}</td>
-            <td contenteditable="true" class="itemList">${item.hasPacked}</td>
+            <td class="itemList">${item.name}</td>
+            <td class="itemList">${item.quantity}</td>
+            <td class="itemList">${item.weight} ${item.unit}</td>
+            <td class="itemList">${item.hasPacked}</td>
         </tr>
         `).join("")
 
@@ -43,8 +43,10 @@ function ViewPacking(){
 }
 
 function ViewPopup(){
+    let editItem = appState.app.editIndex === null ? null :
+                    appState.packing.items[appState.app.editIndex]
     return /*html*/ `
-        <div id="popup-overlay" class="hidden">
+        <div id="popup-overlay" class="${appState.app.popupOpen ? "" : "hidden"}">
             <div id="popup-sheet">
                 <table> 
                     <tr>
@@ -54,15 +56,18 @@ function ViewPopup(){
                         <th>Packed</th>
                     </tr>
                     <tr>
-                        <td><input type="text" id="popup-name"></td>
-                        <td><input type="number" id="popup-quantity"></td>
-                        <td><input type="number" id="popup-weight">
+                        <td class="pop-bubble"><input type="text" id="popup-name" 
+                                                        value="${editItem ? editItem.name : ""}"></td>
+                        <td class="pop-bubble"><input type="number" id="popup-quantity" 
+                                                        value="${editItem ? editItem.quantity : ""}"></td>
+                        <td class="pop-bubble"><input type="number" id="popup-weight" 
+                                                        value="${editItem ? editItem.weight : ""}">
                             <select id="popup-unit">
-                                <option value="kg">kg</option>
-                                <option value="lbs">lbs</option>
+                                <option value="kg" ${editItem && editItem.unit === "kg" ? "selected" : ""}>kg</option>
+                                <option value="lbs" ${editItem && editItem.unit === "lbs" ? "selected" : ""}>lbs</option>
                             </select>
                         </td>
-                        <td><input type="checkbox" id="popup-packed"></td>
+                        <td class="pop-bubble"><input type="checkbox" id="popup-packed" value="${editItem && editItem.hasPacked ? "checked" : ""}"></td>
                     </tr>
                 </table>
                 <button class="popup-btn" id="confirm">Add</button>

@@ -7,11 +7,14 @@ function initPackingBtns(){
     const tableCon = document.getElementById("table-container")
 
     addBtn.addEventListener("click", function(){
-        document.getElementById("popup-overlay").classList.remove("hidden")
+        appState.app.editIndex = null
+        appState.app.popupOpen = true
+        UpdateView()
     })
 
     cancel.addEventListener("click", function(){
-        document.getElementById("popup-overlay").classList.add("hidden")
+        appState.app.popupOpen = false
+        UpdateView()
     })
 
     confirm.addEventListener("click", function(){
@@ -23,8 +26,13 @@ function initPackingBtns(){
             hasPacked: document.getElementById("popup-packed").checked
         }
 
-        appState.packing.items.push(addList)
+        if (appState.app.editIndex === null){
+            appState.packing.items.push(addList)
+        } else {
+            appState.packing.items[appState.app.editIndex] = addList
+        }
 
+        appState.app.popupOpen = false
         UpdateView()
     })
     
@@ -36,10 +44,24 @@ function initPackingBtns(){
 
     tableCon.addEventListener("click", function(e){
         let row = e.target.closest("tr")
+        console.log("clicked row:", row, "index:", row ? row.dataset.index : "no row")
+        if (!row) return
+        if (row.dataset.index === undefined) return
 
         if(appState.app.deleteMode === true){
             let index = Number(row.dataset.index)
             appState.packing.items.splice(index, 1)
+        } else {
+            let index = Number(row.dataset.index)
+            appState.app.editIndex = index
+
+            document.getElementById("popup-name").value = appState.packing.items[index].name
+            document.getElementById("popup-quantity").value = appState.packing.items[index].quantity
+            document.getElementById("popup-weight").value = appState.packing.items[index].weight
+            document.getElementById("popup-unit").value = appState.packing.items[index].unit
+            document.getElementById("popup-packed").checked = appState.packing.items[index].hasPacked
+
+            appState.app.popupOpen = true
         }
 
         UpdateView()
