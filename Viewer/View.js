@@ -19,4 +19,8 @@ function UpdateView(){
     if (appState.app.currentView === "Packing"){
         initPackingBtns()
     }
+    
+    if (appState.app.currentView === "Menu"){
+        initMenuBtns()
+    }
 }

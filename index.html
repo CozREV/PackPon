@@ -8,17 +8,20 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&family=Reggae+One&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <title>PackPon</title>
 </head>
 <body>
     
     <div id="main"></div>
     <footer class="foot" id="footer">
-        <button id="footer-btn">▲</button>
+        <button id="footer-btn"><span id="arrow-icon">▲</span></button>
         <div id="footer-content">
             <p id="fake-cr">
                 &copy; 2026 PackPon (Totally real)
             </p>
+            <div id="home-btn"><i class="fa-solid fa-house"></i></div>
         </div>
     </footer>
 
@@ -32,5 +35,10 @@
 
     <script src="./JP-packing/packingView.js"></script>
     <script src="./JP-packing/packingController.js"></script>
+
+    
+    <script>
+        UpdateView()
+    </script>
 </body>
 </html>

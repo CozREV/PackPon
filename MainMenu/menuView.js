@@ -7,11 +7,9 @@ function MenuView()  {
             <h3>All-In-One Japan Trip Planner</h3>
         </div>
         <nav id="btns">
-            <div class="menu-btn" id="packer-btn">Packer</div>
-            <div class="menu-btn" id="convert-btn">Converter</div>
-            <div class="menu-btn" id="budget-btn">Budget</div>
+            <button class="menu-btn" id="packer-btn">Packer</button>
+            <button class="menu-btn" id="convert-btn">Converter</button>
+            <button class="menu-btn" id="budget-btn">Budget</button>
         </nav>
     `
 }
-
-UpdateView()
