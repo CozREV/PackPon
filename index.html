@@ -45,6 +45,13 @@
     <script>
         getCurrencies()
         UpdateView()
+
+        document.addEventListener("keydown", function(e){
+            if (e.key === "Escape") {
+                appState.app.popupOpen = false
+                UpdateView()
+            }
+        })
     </script>
 </body>
 </html>

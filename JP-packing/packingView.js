@@ -6,7 +6,8 @@ function ViewPacking(){
             <td class="itemList">${item.name}</td>
             <td class="itemList">${item.quantity}</td>
             <td class="itemList">${item.weight} ${item.unit}</td>
-            <td class="itemList">${item.hasPacked}</td>
+            <td class="itemList">${item.hasPacked ? `<i class="fa-solid fa-check" style="color: green;">` 
+                                                    : `<i class="fa-solid fa-xmark" style="color: red;">`}</td>
         </tr>
         `).join("")
 
