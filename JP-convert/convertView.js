@@ -1,7 +1,7 @@
 function ViewConvert() {
     let currency = appState.currency.convert.filter(convert => convert.iso_code !== "JPY")
                                             .map(convert => /*HTML*/ `
-        <option id="dropdown-menu" value="${convert.iso_code}" ${convert.iso_code === appState.currency.selected ? "selected" : ""}>${convert.name}</option>
+        <option value="${convert.iso_code}" ${convert.iso_code === appState.currency.selected ? "selected" : ""}>${convert.name}</option>
         `).join("")
 
     let currencyBubble = /*HTML*/ `
